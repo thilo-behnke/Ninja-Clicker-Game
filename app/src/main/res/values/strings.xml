@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Ninja Clicker</string>
+
+    <string name="menu_greeting">Willkommen zu Ninja Clicker!</string>
+    <string name="menu_button_endless">Endlos-Modus starten</string>
+    <string name="menu_button_level">Level-Modus starten</string>
+    <string name="menu_endless_difficulty_text">Bitte wählen Sie die Schwierigkeitsstufe:</string>
+    <string name="menu_input_sprite_number_text">Anzahl Figuren:</string>
+    <string name="menu_endless_confirm_button">Bestätigen</string>
+
+    <string name="menu_level_text">Bitte wählen Sie das Level aus.</string>
+    <string name="menu_level_1_button">Level 1</string>
+
+    <string-array name="difficulty_spinner">
+        <item>Leicht</item>
+        <item>Normal</item>
+        <item>Schwer</item>
+    </string-array>
+
+
+</resources>

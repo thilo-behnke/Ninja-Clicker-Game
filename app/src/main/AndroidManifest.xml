@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.janth.ninjaclicker">
+    package="com.tbeh.ninjaclicker.ninjaclicker">
 
     <application
         android:allowBackup="true"
@@ -8,18 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.janth.ninjaclicker.activity.TitleActivity">
+        <activity android:name="com.tbeh.ninjaclicker.activity.TitleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.janth.ninjaclicker.activity.BaseActivity" />
-        <activity android:name="com.example.janth.ninjaclicker.activity.MenuActivity" />
-        <activity android:name="com.example.janth.ninjaclicker.activity.EndlessMenuActivity" />
-        <activity android:name="com.example.janth.ninjaclicker.activity.BaseGameActivity" />
-        <activity android:name="com.example.janth.ninjaclicker.activity.LevelSelectActivity" />
-        <activity android:name="com.example.janth.ninjaclicker.activity.LevelModeActivity" />
+        <activity android:name="com.tbeh.ninjaclicker.activity.BaseActivity" />
+        <activity android:name="com.tbeh.ninjaclicker.activity.MenuActivity" />
+        <activity android:name="com.tbeh.ninjaclicker.activity.EndlessMenuActivity" />
+        <activity android:name="com.tbeh.ninjaclicker.activity.BaseGameActivity" />
+        <activity android:name="com.tbeh.ninjaclicker.activity.LevelSelectActivity" />
+        <activity android:name="com.tbeh.ninjaclicker.activity.LevelModeActivity" />
     </application>
 
 </manifest>

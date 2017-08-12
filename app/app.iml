@@ -79,8 +79,10 @@
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/build-info" />
+      <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/classes-jar" />
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/incremental-classes" />
       <excludeFolder url="file://$MODULE_DIR$/path/to/build/Ninja-Clicker-Game/app/intermediates/incremental-runtime-classes" />

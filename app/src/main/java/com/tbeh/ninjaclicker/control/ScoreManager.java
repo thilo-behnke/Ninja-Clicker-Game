@@ -1,6 +1,6 @@
 package com.tbeh.ninjaclicker.control;
 
-import com.tbeh.ninjaclicker.main.GameEngine;
+import com.tbeh.ninjaclicker.main.World;
 import com.tbeh.ninjaclicker.model.CustomObserver;
 import com.tbeh.ninjaclicker.model.sprite.CharacterEnum;
 import com.tbeh.ninjaclicker.model.sprite.Sprite;
@@ -42,7 +42,7 @@ public class ScoreManager implements CustomObserver {
     @Override
     public void onNotify(Enum enumMessage) {
         if(enumMessage.getDeclaringClass().equals(CharacterEnum.class)){
-            updateScoreSprite(((BaseSpawnManager) GameEngine.getSpawnManager()).getCharacterPrototype((CharacterEnum)enumMessage));
+            updateScoreSprite(((BaseSpawnManager) World.getSpawnManager()).getCharacterPrototype((CharacterEnum)enumMessage));
         }
     }
 

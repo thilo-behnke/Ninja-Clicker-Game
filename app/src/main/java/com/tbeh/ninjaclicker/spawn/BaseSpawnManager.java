@@ -54,6 +54,7 @@ public abstract class BaseSpawnManager implements ISpawnManager {
         return swordSpawner;
     }
 
+    @Override
     public Sprite getCharacterPrototype(CharacterEnum characterEnum) {
         if (characterEnum.equals(NINJA_RED)) {
             return marioTemplate;

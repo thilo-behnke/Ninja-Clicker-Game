@@ -5,6 +5,7 @@ import android.content.Context;
 import com.tbeh.ninjaclicker.FileParser;
 import com.tbeh.ninjaclicker.main.GameEngine;
 import com.tbeh.ninjaclicker.LevelLoader;
+import com.tbeh.ninjaclicker.main.World;
 
 public class LevelGameView extends BaseGameView {
 
@@ -48,15 +49,15 @@ public class LevelGameView extends BaseGameView {
 
     public void startInitialRound() {
         levelLoader.loadLevelData();
-        GameEngine.getSpawnManager().setUpSpawnManager(levelLoader.getSpriteMap());
-        GameEngine.getSpriteList().addAll(GameEngine.getSpawnManager().spawnMinions());
+        World.getSpawnManager().setUpSpawnManager(levelLoader.getSpriteMap());
+        World.getSpriteList().addAll(World.getSpawnManager().spawnMinions());
         getGameTimer().startTimer(10000);
         roundStatus = ROUND_RUNNING;
     }
 
     public void reloadRound(){
         getGameTimer().cancelTimer();
-        GameEngine.getSpriteList().addAll(GameEngine.getSpawnManager().spawnMinions());
+        World.getSpriteList().addAll(World.getSpawnManager().spawnMinions());
         getGameTimer().startTimer(10000);
         roundStatus = ROUND_RUNNING;
     }
@@ -64,8 +65,8 @@ public class LevelGameView extends BaseGameView {
     public void startNewRound() {
         getGameTimer().cancelTimer();
         levelLoader.loadLevelData();
-        GameEngine.getSpawnManager().setUpSpawnManager(levelLoader.getSpriteMap());
-        GameEngine.getSpriteList().addAll(GameEngine.getSpawnManager().spawnMinions());
+        World.getSpawnManager().setUpSpawnManager(levelLoader.getSpriteMap());
+        World.getSpriteList().addAll(World.getSpawnManager().spawnMinions());
         getGameTimer().startTimer(10000);
         roundStatus = ROUND_RUNNING;
     }

@@ -14,6 +14,7 @@ import com.tbeh.ninjaclicker.main.GameEngine;
 import com.tbeh.ninjaclicker.GameTimer;
 import com.tbeh.ninjaclicker.activity.BaseActivity;
 import com.tbeh.ninjaclicker.animation.DyingAnimation;
+import com.tbeh.ninjaclicker.main.World;
 import com.tbeh.ninjaclicker.model.sprite.PowerUp;
 import com.tbeh.ninjaclicker.model.sprite.PowerUpEnum;
 import com.tbeh.ninjaclicker.model.sprite.Sprite;
@@ -23,7 +24,7 @@ import java.util.Iterator;
 
 import static android.os.SystemClock.sleep;
 import static com.tbeh.ninjaclicker.main.GameEngine.getCollisionList;
-import static com.tbeh.ninjaclicker.main.GameEngine.getSpriteList;
+import static com.tbeh.ninjaclicker.main.World.getSpriteList;
 import static com.tbeh.ninjaclicker.main.GameEngine.isRunning;
 
 public abstract class BaseGameView extends SurfaceView implements Runnable {
@@ -105,7 +106,7 @@ public abstract class BaseGameView extends SurfaceView implements Runnable {
 
     private void renderSprites(Canvas canvas) {
         synchronized (getSpriteList()) {
-            for (Sprite sprite : gameEngine.getSpriteList()) {
+            for (Sprite sprite : World.getSpriteList()) {
                 Bitmap bitmap = sprite.comp().shared().getBitmap();
                 if (sprite.comp().general().getAnimation() instanceof DyingAnimation) {
                     Matrix matrix = new Matrix();

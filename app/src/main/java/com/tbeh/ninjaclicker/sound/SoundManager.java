@@ -2,8 +2,8 @@ package com.tbeh.ninjaclicker.sound;
 
 import android.os.AsyncTask;
 
-import com.tbeh.ninjaclicker.main.GameEngine;
 import com.tbeh.ninjaclicker.activity.BaseActivity;
+import com.tbeh.ninjaclicker.main.World;
 import com.tbeh.ninjaclicker.model.CustomObserver;
 import com.tbeh.ninjaclicker.model.Message;
 import com.tbeh.ninjaclicker.model.sprite.CharacterEnum;
@@ -49,7 +49,7 @@ public class SoundManager implements CustomObserver {
                         soundService.stopMusic();
                     }
                 } else if(messageEnum.getDeclaringClass().equals(CharacterEnum.class)){
-                    soundService.playSound(((BaseSpawnManager)GameEngine.getSpawnManager()).getCharacterPrototype((CharacterEnum)messageEnum).comp().shared().getSound());
+                    soundService.playSound(((BaseSpawnManager) World.getSpawnManager()).getCharacterPrototype((CharacterEnum)messageEnum).comp().shared().getSound());
                 }
                 return null;
             }

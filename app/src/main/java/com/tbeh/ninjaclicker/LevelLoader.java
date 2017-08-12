@@ -26,11 +26,11 @@ public class LevelLoader {
              = levelSectionData.entrySet().iterator(); iterator.hasNext(); ) {
             HashMap.Entry<LevelParameter.Type, LevelSetting> entry = iterator.next();
             switch (entry.getValue().getLevelParameter().getType().getGroup()) {
-                case com.tbeh.ninjaclicker.ninjaclicker.model.level.LevelParameter.Type.Group.SPRITES:
+                case SPRITES:
                     spriteMap.put(entry.getKey(), entry.getValue());
                     iterator.remove();
                     break;
-                case com.tbeh.ninjaclicker.ninjaclicker.model.level.LevelParameter.Type.Group.SETTINGS:
+                case SETTINGS:
                     settingMap.put(entry.getKey(), entry.getValue());
                     iterator.remove();
                     break;

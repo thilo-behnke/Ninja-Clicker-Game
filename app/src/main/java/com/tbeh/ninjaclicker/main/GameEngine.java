@@ -18,7 +18,6 @@ import com.tbeh.ninjaclicker.model.sprite.PowerUpEnum;
 import com.tbeh.ninjaclicker.model.sprite.Sprite;
 import com.tbeh.ninjaclicker.model.sprite.components.ai.FallFlatComp;
 import com.tbeh.ninjaclicker.model.sprite.components.ai.FlyAwayComp;
-import com.tbeh.ninjaclicker.spawn.ISpawnManager;
 import com.tbeh.ninjaclicker.spawn.RandomSpawnManager;
 
 import java.util.ArrayList;
@@ -33,14 +32,7 @@ import static com.tbeh.ninjaclicker.main.GameEngine.RoundStatus.ROUND_RUNNING;
 import static com.tbeh.ninjaclicker.main.GameEngine.RoundStatus.ROUND_WON;
 
 public class GameEngine implements Runnable {
-    /**
-     * A list that holds all sprites currently on screen.
-     */
-    private static List<Sprite> spriteList;
-    /**
-     * Manages the spawning of sprites.
-     */
-    private static ISpawnManager spawnManager;
+
     /**
      * Detects collions on Screen.
      */
@@ -83,10 +75,10 @@ public class GameEngine implements Runnable {
         screenManager = ScreenManager.getInstance(context);
         random = new Random();
         scoreManager = ScoreManager.getInstance();
-        spriteList = Collections.synchronizedList(new ArrayList<Sprite>());
+        World.setSpriteList(Collections.synchronizedList(new ArrayList<>()));
         collisionDetector = CollisionDetector.getInstance(new NormalCollisionDetection(context));
         activePowerUp = PowerUpEnum.NONE;
-        spawnManager = new RandomSpawnManager();
+        World.setSpawnManager(new RandomSpawnManager());
         collisionList = Collections.synchronizedList(new ArrayList<Point>());
 
         ((BaseGameActivity) context).registerObserver(scoreManager);
@@ -105,9 +97,9 @@ public class GameEngine implements Runnable {
     }
 
     private void startInitialRound() {
-        GameEngine.getSpawnManager().setUpSpawnManager(settings);
-        GameEngine.getSpriteList().clear();
-        GameEngine.getSpriteList().addAll(GameEngine.getSpawnManager().spawnMinions());
+        World.getSpawnManager().setUpSpawnManager(settings);
+        World.getSpriteList().clear();
+        World.getSpriteList().addAll(World.getSpawnManager().spawnMinions());
         gameTimer.startTimer(10000);
         roundStatus = ROUND_RUNNING;
     }
@@ -115,8 +107,8 @@ public class GameEngine implements Runnable {
     private void startNewRound() {
         gameTimer.cancelTimer();
         nextLevel();
-        GameEngine.getSpriteList().clear();
-        GameEngine.getSpriteList().addAll(GameEngine.getSpawnManager().spawnMinions());
+        World.getSpriteList().clear();
+        World.getSpriteList().addAll(World.getSpawnManager().spawnMinions());
         gameTimer.startTimer(10000);
         roundStatus = ROUND_RUNNING;
     }
@@ -148,7 +140,7 @@ public class GameEngine implements Runnable {
 
     private static void updateSprites() {
         List<Sprite> toRemove = new ArrayList<>();
-        for (Sprite sprite : getSpriteList()) {
+        for (Sprite sprite : World.getSpriteList()) {
             if (sprite.comp().general().isDying()) {
                 sprite.comp().general().setDead();
                 sprite.comp().general().setAnimation(new DyingAnimation(20));
@@ -167,8 +159,8 @@ public class GameEngine implements Runnable {
                 sprite.update();
             }
         }
-        synchronized (getSpriteList()) {
-            getSpriteList().removeAll(toRemove);
+        synchronized (World.getSpriteList()) {
+            World.getSpriteList().removeAll(toRemove);
         }
     }
 
@@ -176,7 +168,7 @@ public class GameEngine implements Runnable {
         if (powerUp == null) {
             int randomNumber = random.nextInt(100);
             if (randomNumber >= 95) {
-                powerUp = GameEngine.getSpawnManager().spawnPowerUp();
+                powerUp = World.getSpawnManager().spawnPowerUp();
                 if (powerUp.getType().equals(PowerUpEnum.HAMMER)) {
                     powerUpTimer.startTimer(5000);
                 } else if (powerUp.getType().equals(PowerUpEnum.SWORD)) {
@@ -221,7 +213,7 @@ public class GameEngine implements Runnable {
                 if (gameTimer.isFinished()) {
                     roundStatus = ROUND_LOST;
                 }
-                if (GameEngine.getSpriteList().isEmpty() || GameEngine.getSpriteList().stream().allMatch(x -> x.getType().equals(CharacterEnum.GIRL))) {
+                if (World.getSpriteList().isEmpty() || World.getSpriteList().stream().allMatch(x -> x.getType().equals(CharacterEnum.GIRL))) {
 //                if (GameEngine.getSpriteList().isEmpty() || onlyContains(CharacterEnum.PEACH)) {
                     roundStatus = ROUND_WON;
                 }
@@ -251,14 +243,6 @@ public class GameEngine implements Runnable {
 
     public static CollisionDetector getCollisionDetector() {
         return collisionDetector;
-    }
-
-    public static List<Sprite> getSpriteList() {
-        return spriteList;
-    }
-
-    public static ISpawnManager getSpawnManager() {
-        return spawnManager;
     }
 
     public static PowerUpEnum getActivePowerUp() {

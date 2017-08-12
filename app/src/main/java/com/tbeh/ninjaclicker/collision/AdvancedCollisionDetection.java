@@ -5,6 +5,7 @@ import android.graphics.Point;
 
 import com.tbeh.ninjaclicker.main.GameEngine;
 import com.tbeh.ninjaclicker.activity.BaseActivity;
+import com.tbeh.ninjaclicker.main.World;
 import com.tbeh.ninjaclicker.model.Message;
 import com.tbeh.ninjaclicker.model.sprite.PowerUp;
 import com.tbeh.ninjaclicker.model.sprite.PowerUpEnum;
@@ -26,10 +27,10 @@ abstract class AdvancedCollisionDetection implements CollisionDetection {
     }
 
     private void handleCollisionSprites(int touchX, int touchY) {
-        synchronized (GameEngine.getSpriteList()) {
+        synchronized (World.getSpriteList()) {
             boolean hit = false;
             Sprite hitSprite = null;
-            for (Sprite sprite : GameEngine.getSpriteList()) {
+            for (Sprite sprite : World.getSpriteList()) {
                 if (isPointWithinSpriteBoundaries(touchX, touchY, sprite) && sprite.comp().general().isAlive()) {
                     hit = true;
                     hitSprite = sprite;

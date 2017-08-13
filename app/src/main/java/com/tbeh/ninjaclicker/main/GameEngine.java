@@ -55,7 +55,7 @@ public class GameEngine implements Runnable {
     private static int level;
     private static List<Point> collisionList;
 
-    private RoundStatus roundStatus;
+    private static RoundStatus roundStatus;
 
     enum RoundStatus {
         ROUND_RUNNING, ROUND_LOST, ROUND_WON;
@@ -63,7 +63,14 @@ public class GameEngine implements Runnable {
 
     private HashMap<LevelParameter.Type, LevelSetting> settings;
 
+    @FunctionalInterface
+    public static interface WinCondition {
+        void check();
+    }
+
     public GameEngine(Context context) {
+
+        World.setWinCondition(GameEngine::standardWinCondition);
 
         settings = new HashMap<>();
         settings.put(LevelParameter.Type.DIFFICULTY, new LevelSetting(LevelParameter.DIFFICULTY_EASY));
@@ -103,7 +110,7 @@ public class GameEngine implements Runnable {
         roundStatus = ROUND_RUNNING;
     }
 
-    private void startNewRound() {
+    private static void startNewRound() {
         World.getGameTimer().cancelTimer();
         nextLevel();
         World.getSpriteList().clear();
@@ -126,7 +133,7 @@ public class GameEngine implements Runnable {
             if (sleepTime >= 0) {
                 sleep(sleepTime);
             }
-            checkWinCondition();
+            World.getWinCondition().check();
             update();
         }
     }
@@ -206,7 +213,7 @@ public class GameEngine implements Runnable {
         }
     }
 
-    private void checkWinCondition() {
+    private static void standardWinCondition() {
         switch (roundStatus) {
             case ROUND_RUNNING:
                 if (World.getGameTimer().isFinished()) {
@@ -263,7 +270,7 @@ public class GameEngine implements Runnable {
         return level;
     }
 
-    private void nextLevel() {
+    private static void nextLevel() {
         level++;
     }
 

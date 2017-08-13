@@ -17,6 +17,8 @@ public class World {
      */
     private static ISpawnManager spawnManager;
 
+    private static GameEngine.WinCondition winCondition;
+
     public static List<Sprite> getSpriteList() {
         return spriteList;
     }
@@ -39,5 +41,13 @@ public class World {
 
     public static void setGameTimer(GameTimer gameTimer) {
         World.gameTimer = gameTimer;
+    }
+
+    public static GameEngine.WinCondition getWinCondition() {
+        return winCondition;
+    }
+
+    public static void setWinCondition(GameEngine.WinCondition winCondition) {
+        World.winCondition = winCondition;
     }
 }

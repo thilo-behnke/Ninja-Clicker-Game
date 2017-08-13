@@ -1,6 +1,7 @@
 package com.tbeh.ninjaclicker.reader;
 
-public class ReadTypes {
+// TODO: Move to other place
+public class WorldObjects {
 
     public enum Count {
         ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), TEN(10);
@@ -26,7 +27,7 @@ public class ReadTypes {
 
     // TODO: Add functional interface for support of swapping goals
     public enum Goal {
-        REMOVE;
+        SCORE;
     }
 
 }

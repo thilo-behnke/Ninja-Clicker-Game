@@ -1,6 +1,6 @@
 package com.tbeh.ninjaclicker.reader.expression;
 
-import com.tbeh.ninjaclicker.reader.ReadTypes;
+import com.tbeh.ninjaclicker.reader.WorldObjects;
 import com.tbeh.ninjaclicker.reader.command.Command;
 import com.tbeh.ninjaclicker.reader.command.GameObjectCommand;
 
@@ -11,7 +11,7 @@ public class TimerExpression extends OperationExpression {
     }
 
     @Override
-    public Command evaluate(ReadTypes.Operation operation) {
-        return new GameObjectCommand((ReadTypes.GameObject) getLeft().evaluate(), operation, (ReadTypes.Count)getRight().evaluate());
+    public Command evaluate(WorldObjects.Operation operation) {
+        return new GameObjectCommand((WorldObjects.GameObject) getLeft().evaluate(), operation, (WorldObjects.Count)getRight().evaluate());
     }
 }

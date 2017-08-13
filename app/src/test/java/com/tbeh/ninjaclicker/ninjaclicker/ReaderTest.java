@@ -7,7 +7,7 @@ import com.tbeh.ninjaclicker.activity.BaseActivity;
 import com.tbeh.ninjaclicker.control.ResourceManager;
 import com.tbeh.ninjaclicker.main.World;
 import com.tbeh.ninjaclicker.model.sprite.CharacterEnum;
-import com.tbeh.ninjaclicker.reader.ReadTypes;
+import com.tbeh.ninjaclicker.reader.WorldObjects;
 import com.tbeh.ninjaclicker.reader.command.Command;
 import com.tbeh.ninjaclicker.reader.expression.CharacterExpression;
 import com.tbeh.ninjaclicker.reader.expression.GameListExpression;
@@ -80,9 +80,9 @@ public class ReaderTest {
     public void SimpleSpriteListTest() {
 
         CharacterExpression characterExpression = new CharacterExpression(CharacterEnum.NINJA_RED.ordinal());
-        NumberExpression numberExpression = new NumberExpression(ReadTypes.Count.FIVE.getIndex());
+        NumberExpression numberExpression = new NumberExpression(WorldObjects.Count.FIVE.getIndex());
         GameListExpression gameListExpression = new GameListExpression(characterExpression, numberExpression);
-        Command command = gameListExpression.evaluate(ReadTypes.Operation.ADD);
+        Command command = gameListExpression.evaluate(WorldObjects.Operation.ADD);
 
         command.execute(world);
 
@@ -94,52 +94,52 @@ public class ReaderTest {
     public void AdvancedSpriteListTest() {
 
         CharacterExpression characterExpression = new CharacterExpression(CharacterEnum.NINJA_BLUE.ordinal());
-        NumberExpression numberExpression = new NumberExpression(ReadTypes.Count.FOUR.getIndex());
+        NumberExpression numberExpression = new NumberExpression(WorldObjects.Count.FOUR.getIndex());
         GameListExpression gameListExpression = new GameListExpression(characterExpression, numberExpression);
-        Command command = gameListExpression.evaluate(ReadTypes.Operation.ADD);
+        Command command = gameListExpression.evaluate(WorldObjects.Operation.ADD);
 
         command.execute(world);
 
         Assert.assertTrue(World.getSpriteList().size() == 4);
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == ReadTypes.Count.FOUR.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == WorldObjects.Count.FOUR.getIndex());
 
         characterExpression = new CharacterExpression(CharacterEnum.NINJA_RED.ordinal());
-        numberExpression = new NumberExpression(ReadTypes.Count.NINE.getIndex());
+        numberExpression = new NumberExpression(WorldObjects.Count.NINE.getIndex());
         gameListExpression = new GameListExpression(characterExpression, numberExpression);
-        command = gameListExpression.evaluate(ReadTypes.Operation.ADD);
+        command = gameListExpression.evaluate(WorldObjects.Operation.ADD);
 
         command.execute(world);
 
         Assert.assertTrue(World.getSpriteList().size() == 13);
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == ReadTypes.Count.FOUR.getIndex());
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_RED)).count() == ReadTypes.Count.NINE.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == WorldObjects.Count.FOUR.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_RED)).count() == WorldObjects.Count.NINE.getIndex());
 
         characterExpression = new CharacterExpression(CharacterEnum.GIRL.ordinal());
-        numberExpression = new NumberExpression(ReadTypes.Count.ONE.getIndex());
+        numberExpression = new NumberExpression(WorldObjects.Count.ONE.getIndex());
         gameListExpression = new GameListExpression(characterExpression, numberExpression);
-        command = gameListExpression.evaluate(ReadTypes.Operation.ADD);
+        command = gameListExpression.evaluate(WorldObjects.Operation.ADD);
 
         command.execute(world);
 
         Assert.assertTrue(World.getSpriteList().size() == 14);
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == ReadTypes.Count.FOUR.getIndex());
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_RED)).count() == ReadTypes.Count.NINE.getIndex());
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.GIRL)).count() == ReadTypes.Count.ONE.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == WorldObjects.Count.FOUR.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_RED)).count() == WorldObjects.Count.NINE.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.GIRL)).count() == WorldObjects.Count.ONE.getIndex());
 
         characterExpression = new CharacterExpression(CharacterEnum.NINJA_RED.ordinal());
-        numberExpression = new NumberExpression(ReadTypes.Count.TWO.getIndex());
+        numberExpression = new NumberExpression(WorldObjects.Count.TWO.getIndex());
         gameListExpression = new GameListExpression(characterExpression, numberExpression);
-        command = gameListExpression.evaluate(ReadTypes.Operation.REMOVE);
+        command = gameListExpression.evaluate(WorldObjects.Operation.REMOVE);
 
         command.execute(world);
 
         Assert.assertTrue(World.getSpriteList().size() == 12);
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_RED)).count() == ReadTypes.Count.SEVEN.getIndex());
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == ReadTypes.Count.FOUR.getIndex());
-        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.GIRL)).count() == ReadTypes.Count.ONE.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_RED)).count() == WorldObjects.Count.SEVEN.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.NINJA_BLUE)).count() == WorldObjects.Count.FOUR.getIndex());
+        Assert.assertTrue(World.getSpriteList().stream().filter(x -> x.getType().equals(CharacterEnum.GIRL)).count() == WorldObjects.Count.ONE.getIndex());
 
         gameListExpression = new GameListExpression(null, null);
-        command = gameListExpression.evaluate(ReadTypes.Operation.CLEAR);
+        command = gameListExpression.evaluate(WorldObjects.Operation.CLEAR);
 
         command.execute(world);
 
@@ -154,11 +154,11 @@ public class ReaderTest {
     //    @Test
     public void TimerCommandTest() {
 
-        GameObjectExpression gameObjectExpression = new GameObjectExpression(ReadTypes.GameObject.GAME_TIMER.ordinal());
-        NumberExpression numberExpression = new NumberExpression(ReadTypes.Count.NINE.getIndex());
+        GameObjectExpression gameObjectExpression = new GameObjectExpression(WorldObjects.GameObject.GAME_TIMER.ordinal());
+        NumberExpression numberExpression = new NumberExpression(WorldObjects.Count.NINE.getIndex());
         TimerExpression timerExpression = new TimerExpression(gameObjectExpression, numberExpression);
 
-        Command command = timerExpression.evaluate(ReadTypes.Operation.SET);
+        Command command = timerExpression.evaluate(WorldObjects.Operation.SET);
         command.execute(world);
 
         Assert.assertTrue(World.getGameTimer().getFormattedCurrentTime().equals("10"));

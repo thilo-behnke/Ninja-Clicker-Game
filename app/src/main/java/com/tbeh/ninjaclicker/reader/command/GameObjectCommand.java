@@ -2,15 +2,15 @@ package com.tbeh.ninjaclicker.reader.command;
 
 import com.tbeh.ninjaclicker.GameTimer;
 import com.tbeh.ninjaclicker.main.World;
-import com.tbeh.ninjaclicker.reader.ReadTypes;
+import com.tbeh.ninjaclicker.reader.WorldObjects;
 
 public class GameObjectCommand implements Command {
 
-    private ReadTypes.GameObject gameObject;
-    private ReadTypes.Operation operation;
-    private ReadTypes.Count count;
+    private WorldObjects.GameObject gameObject;
+    private WorldObjects.Operation operation;
+    private WorldObjects.Count count;
 
-    public GameObjectCommand(ReadTypes.GameObject gameObject, ReadTypes.Operation operation, ReadTypes.Count count) {
+    public GameObjectCommand(WorldObjects.GameObject gameObject, WorldObjects.Operation operation, WorldObjects.Count count) {
         this.gameObject = gameObject;
         this.operation = operation;
         this.count = count;
@@ -21,7 +21,7 @@ public class GameObjectCommand implements Command {
         switch (gameObject){
             case GAME_TIMER:
                 world.setGameTimer(new GameTimer());
-                if(operation.equals(ReadTypes.Operation.SET)) world.getGameTimer().startTimer(count.ordinal() * 1000);
+                if(operation.equals(WorldObjects.Operation.SET)) world.getGameTimer().startTimer(count.ordinal() * 1000);
         }
     }
 }

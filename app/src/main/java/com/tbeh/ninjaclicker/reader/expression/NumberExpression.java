@@ -1,6 +1,6 @@
 package com.tbeh.ninjaclicker.reader.expression;
 
-import com.tbeh.ninjaclicker.reader.ReadTypes;
+import com.tbeh.ninjaclicker.reader.WorldObjects;
 
 public class NumberExpression extends ValueExpression {
 
@@ -10,6 +10,6 @@ public class NumberExpression extends ValueExpression {
 
     @Override
     public Enum evaluate() {
-        return ReadTypes.Count.values()[getValue()];
+        return WorldObjects.Count.values()[getValue()];
     }
 }

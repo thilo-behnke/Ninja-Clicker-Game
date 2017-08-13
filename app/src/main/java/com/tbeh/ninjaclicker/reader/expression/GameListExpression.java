@@ -1,7 +1,7 @@
 package com.tbeh.ninjaclicker.reader.expression;
 
 import com.tbeh.ninjaclicker.model.sprite.CharacterEnum;
-import com.tbeh.ninjaclicker.reader.ReadTypes;
+import com.tbeh.ninjaclicker.reader.WorldObjects;
 import com.tbeh.ninjaclicker.reader.command.Command;
 import com.tbeh.ninjaclicker.reader.command.SpriteListCommand;
 
@@ -12,11 +12,11 @@ public class GameListExpression extends OperationExpression {
     }
 
     @Override
-    public Command evaluate(ReadTypes.Operation operation) {
+    public Command evaluate(WorldObjects.Operation operation) {
         return new SpriteListCommand(
                 getLeft() != null ? (CharacterEnum)getLeft().evaluate() : null,
                 operation,
-                getRight() != null ? (ReadTypes.Count)getRight().evaluate() : null
+                getRight() != null ? (WorldObjects.Count)getRight().evaluate() : null
         );
     }
 }

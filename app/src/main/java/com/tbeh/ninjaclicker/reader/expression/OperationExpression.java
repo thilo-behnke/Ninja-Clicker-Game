@@ -2,7 +2,7 @@ package com.tbeh.ninjaclicker.reader.expression;
 
 import android.support.annotation.Nullable;
 
-import com.tbeh.ninjaclicker.reader.ReadTypes;
+import com.tbeh.ninjaclicker.reader.WorldObjects;
 import com.tbeh.ninjaclicker.reader.command.Command;
 
 public abstract class OperationExpression implements Expression {
@@ -17,7 +17,7 @@ public abstract class OperationExpression implements Expression {
         this.right = right;
     }
 
-    public abstract Command evaluate(ReadTypes.Operation operation);
+    public abstract Command evaluate(WorldObjects.Operation operation);
 
     public ValueExpression getLeft() {
         return left;

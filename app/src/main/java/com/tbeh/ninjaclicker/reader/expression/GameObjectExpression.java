@@ -1,6 +1,6 @@
 package com.tbeh.ninjaclicker.reader.expression;
 
-import com.tbeh.ninjaclicker.reader.ReadTypes;
+import com.tbeh.ninjaclicker.reader.WorldObjects;
 
 public class GameObjectExpression extends ValueExpression {
 
@@ -10,6 +10,6 @@ public class GameObjectExpression extends ValueExpression {
 
     @Override
     public Enum evaluate() {
-        return ReadTypes.GameObject.values()[getValue()];
+        return WorldObjects.GameObject.values()[getValue()];
     }
 }

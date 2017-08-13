@@ -20,11 +20,26 @@ public enum CharacterEnum implements ICharacter {
                     .setGeneralComponent(new GeneralComp())
                     .SetSharedComp(new SharedComp(
                             BaseActivity.getResourceManager().getSpriteFile(this),
-                            SCORE_NINJAR,
+                            getScore(),
                             BaseActivity.getResourceManager().getSoundFile("NINJAR_HURT")))
-                    .setPhysicsComponent(new PhysicsComp(V_NINJAR))
+                    .setPhysicsComponent(new PhysicsComp(getVelocity()))
                     .setAiComponent(new RepeatComp(new WanderComp(new MoveComp())))
                     .createSprite(this);
+        }
+
+        @Override
+        public int getVelocity() {
+            return 5;
+        }
+
+        @Override
+        public int getScore() {
+            return 100;
+        }
+
+        @Override
+        public int getRareness() {
+            return 100;
         }
     },
 
@@ -36,11 +51,26 @@ public enum CharacterEnum implements ICharacter {
                     .setGeneralComponent(new GeneralComp())
                     .SetSharedComp(new SharedComp(
                             BaseActivity.getResourceManager().getSpriteFile(this),
-                            SCORE_NINJAB,
+                            getScore(),
                             BaseActivity.getResourceManager().getSoundFile("NINJAB_HURT")))
-                    .setPhysicsComponent(new PhysicsComp(V_NINJAB))
+                    .setPhysicsComponent(new PhysicsComp(getVelocity()))
                     .setAiComponent(new RepeatComp(new WanderComp(new MoveComp())))
                     .createSprite(this);
+        }
+
+        @Override
+        public int getVelocity() {
+            return 20;
+        }
+
+        @Override
+        public int getScore() {
+            return 5;
+        }
+
+        @Override
+        public int getRareness() {
+            return 50;
         }
     },
 
@@ -52,19 +82,26 @@ public enum CharacterEnum implements ICharacter {
                     .setGeneralComponent(new GeneralComp())
                     .SetSharedComp(new SharedComp(
                             BaseActivity.getResourceManager().getSpriteFile(this),
-                            SCORE_GIRL,
+                            getScore(),
                             BaseActivity.getResourceManager().getSoundFile("GIRL_HURT")))
-                    .setPhysicsComponent(new PhysicsComp(V_GIRL))
+                    .setPhysicsComponent(new PhysicsComp(getVelocity()))
                     .setAiComponent(new RepeatComp(new SlideComp(new MoveComp())))
                     .createSprite(this);
         }
+
+        @Override
+        public int getVelocity() {
+            return 5;
+        }
+
+        @Override
+        public int getScore() {
+            return -500;
+        }
+
+        @Override
+        public int getRareness() {
+            return 20;
+        }
     };
-
-    private static final int V_NINJAR = 5;
-    private static final int V_NINJAB = 20;
-    private static final int V_GIRL = 5;
-
-    private final static int SCORE_NINJAR = 100;
-    private final static int SCORE_NINJAB = 200;
-    private final static int SCORE_GIRL = -500;
 }

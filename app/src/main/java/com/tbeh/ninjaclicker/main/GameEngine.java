@@ -47,7 +47,6 @@ public class GameEngine implements Runnable {
     private static ScoreManager scoreManager;
 
     private static ScreenManager screenManager;
-    public static GameTimer gameTimer;
     private static GameTimer powerUpTimer;
     private static GameTimer activePowerUpTimer;
     private static Sprite powerUp;
@@ -91,7 +90,7 @@ public class GameEngine implements Runnable {
     }
 
     private void init() {
-        gameTimer = new GameTimer();
+        World.setGameTimer(new GameTimer());
         powerUpTimer = new GameTimer();
         activePowerUp = PowerUpEnum.NONE;
     }
@@ -100,16 +99,16 @@ public class GameEngine implements Runnable {
         World.getSpawnManager().setUpSpawnManager(settings);
         World.getSpriteList().clear();
         World.getSpriteList().addAll(World.getSpawnManager().spawnMinions());
-        gameTimer.startTimer(10000);
+        World.getGameTimer().startTimer(10000);
         roundStatus = ROUND_RUNNING;
     }
 
     private void startNewRound() {
-        gameTimer.cancelTimer();
+        World.getGameTimer().cancelTimer();
         nextLevel();
         World.getSpriteList().clear();
         World.getSpriteList().addAll(World.getSpawnManager().spawnMinions());
-        gameTimer.startTimer(10000);
+        World.getGameTimer().startTimer(10000);
         roundStatus = ROUND_RUNNING;
     }
 
@@ -210,11 +209,10 @@ public class GameEngine implements Runnable {
     private void checkWinCondition() {
         switch (roundStatus) {
             case ROUND_RUNNING:
-                if (gameTimer.isFinished()) {
+                if (World.getGameTimer().isFinished()) {
                     roundStatus = ROUND_LOST;
                 }
                 if (World.getSpriteList().isEmpty() || World.getSpriteList().stream().allMatch(x -> x.getType().equals(CharacterEnum.GIRL))) {
-//                if (GameEngine.getSpriteList().isEmpty() || onlyContains(CharacterEnum.PEACH)) {
                     roundStatus = ROUND_WON;
                 }
                 break;

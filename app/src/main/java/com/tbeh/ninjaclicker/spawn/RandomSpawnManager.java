@@ -33,13 +33,13 @@ public class RandomSpawnManager extends BaseSpawnManager {
         for(int i = 0; i < spawnNumber; i++){
             int randomNumber = random.nextInt(10);
             if(randomNumber>=SPAWN_MARIO && randomNumber<SPAWN_LUIGI){
-                spriteList.add(getMarioSpawner().getSpriteCopy());
+                spriteList.add(getNinjaRSpawner().getSpriteCopy());
             }
             else if(randomNumber>=SPAWN_LUIGI && randomNumber<SPAWN_PEACH){
-                spriteList.add(getLuigiSpawner().getSpriteCopy());
+                spriteList.add(getNinjaBSpawner().getSpriteCopy());
             }
             else if(randomNumber>=SPAWN_PEACH){
-                spriteList.add(getPeachSpawner().getSpriteCopy());
+                spriteList.add(getGirlSpawner().getSpriteCopy());
             }
         }
         return spriteList;

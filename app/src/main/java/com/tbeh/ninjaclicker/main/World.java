@@ -1,11 +1,13 @@
 package com.tbeh.ninjaclicker.main;
 
+import com.tbeh.ninjaclicker.GameTimer;
 import com.tbeh.ninjaclicker.model.sprite.Sprite;
 import com.tbeh.ninjaclicker.spawn.ISpawnManager;
 
 import java.util.List;
 
 public class World {
+    private static GameTimer gameTimer;
     /**
      * A list that holds all sprites currently on screen.
      */
@@ -29,5 +31,13 @@ public class World {
 
     public static void setSpawnManager(ISpawnManager spawnManager) {
         World.spawnManager = spawnManager;
+    }
+
+    public static GameTimer getGameTimer() {
+        return gameTimer;
+    }
+
+    public static void setGameTimer(GameTimer gameTimer) {
+        World.gameTimer = gameTimer;
     }
 }

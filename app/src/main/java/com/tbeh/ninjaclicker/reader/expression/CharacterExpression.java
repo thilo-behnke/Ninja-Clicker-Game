@@ -12,9 +12,4 @@ public class CharacterExpression extends ValueExpression {
     public Enum evaluate() {
         return CharacterEnum.values()[getValue()];
     }
-
-    @Override
-    int getValue() {
-        return super.getValue();
-    }
 }

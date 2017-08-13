@@ -20,20 +20,20 @@ public class ParameterSpawnManager extends BaseSpawnManager {
         spriteList = new ArrayList<>();
 
         for(int i = 0; i < Integer.parseInt(spriteMap.get(LevelParameter.CHARACTER_MARIO).getAdditionalParameter1()); i++){
-            spriteList.add(getMarioSpawner().getSpriteCopy());
+            spriteList.add(getNinjaRSpawner().getSpriteCopy());
         }
 
 
         for(int i = 0; i < spriteMap.size(); i++){
             switch (spriteMap.get(i).getLevelParameter()){
                 case CHARACTER_MARIO:
-                    spriteList.add(getMarioSpawner().getSpriteCopy());
+                    spriteList.add(getNinjaRSpawner().getSpriteCopy());
                     break;
                 case CHARACTER_LUIGI:
-                    spriteList.add(getLuigiSpawner().getSpriteCopy());
+                    spriteList.add(getNinjaBSpawner().getSpriteCopy());
                     break;
                 case CHARACTER_PEACH:
-                    spriteList.add(getPeachSpawner().getSpriteCopy());
+                    spriteList.add(getGirlSpawner().getSpriteCopy());
                     break;
             }
         }

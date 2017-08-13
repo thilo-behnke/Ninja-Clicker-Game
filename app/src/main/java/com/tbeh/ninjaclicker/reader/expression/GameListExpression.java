@@ -13,6 +13,10 @@ public class GameListExpression extends OperationExpression {
 
     @Override
     public Command evaluate(ReadTypes.Operation operation) {
-        return new SpriteListCommand((CharacterEnum)getLeft().evaluate(), operation, (ReadTypes.Count)getRight().evaluate());
+        return new SpriteListCommand(
+                getLeft() != null ? (CharacterEnum)getLeft().evaluate() : null,
+                operation,
+                getRight() != null ? (ReadTypes.Count)getRight().evaluate() : null
+        );
     }
 }

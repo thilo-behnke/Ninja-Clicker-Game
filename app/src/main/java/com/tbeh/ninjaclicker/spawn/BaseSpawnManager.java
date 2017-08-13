@@ -13,37 +13,37 @@ import static com.tbeh.ninjaclicker.model.sprite.PowerUpEnum.SWORD;
 
 public abstract class BaseSpawnManager implements ISpawnManager {
     private static Random random = new Random();
-    private Sprite marioTemplate;
-    private Sprite luigiTemplate;
-    private Sprite peachTemplate;
-    private Spawner marioSpawner;
-    private Spawner luigiSpawner;
-    private Spawner peachSpawner;
+    private Sprite ninjaRTemplate;
+    private Sprite ninjaBTemplate;
+    private Sprite girlTemplate;
+    private Spawner ninjaRSpawner;
+    private Spawner ninjaBSpawner;
+    private Spawner girlSpawner;
     private Spawner hammerSpawner;
     private Spawner swordSpawner;
 
 
     public BaseSpawnManager() {
-        marioTemplate = NINJA_RED.makePrototype();
-        marioSpawner = new Spawner(marioTemplate);
-        luigiTemplate = NINJA_BLUE.makePrototype();
-        luigiSpawner = new Spawner(luigiTemplate);
-        peachTemplate = GIRL.makePrototype();
-        peachSpawner = new Spawner(peachTemplate);
+        ninjaRTemplate = NINJA_RED.makePrototype();
+        ninjaRSpawner = new Spawner(ninjaRTemplate);
+        ninjaBTemplate = NINJA_BLUE.makePrototype();
+        ninjaBSpawner = new Spawner(ninjaBTemplate);
+        girlTemplate = GIRL.makePrototype();
+        girlSpawner = new Spawner(girlTemplate);
         hammerSpawner = new Spawner(HAMMER.makePrototype());
         swordSpawner = new Spawner(SWORD.makePrototype());
     }
 
-    Spawner getMarioSpawner() {
-        return marioSpawner;
+    Spawner getNinjaRSpawner() {
+        return ninjaRSpawner;
     }
 
-    Spawner getLuigiSpawner() {
-        return luigiSpawner;
+    Spawner getNinjaBSpawner() {
+        return ninjaBSpawner;
     }
 
-    Spawner getPeachSpawner() {
-        return peachSpawner;
+    Spawner getGirlSpawner() {
+        return girlSpawner;
     }
 
     private Spawner getHammerSpawner() {
@@ -56,14 +56,15 @@ public abstract class BaseSpawnManager implements ISpawnManager {
 
     @Override
     public Sprite getCharacterPrototype(CharacterEnum characterEnum) {
-        if (characterEnum.equals(NINJA_RED)) {
-            return marioTemplate;
-        } else if (characterEnum.equals(NINJA_BLUE)) {
-            return luigiTemplate;
-        } else if (characterEnum.equals(GIRL)) {
-            return peachTemplate;
-        } else {
-            throw new IllegalArgumentException();
+        switch (characterEnum) {
+            case NINJA_RED:
+                return ninjaRTemplate;
+            case NINJA_BLUE:
+                return ninjaBTemplate;
+            case GIRL:
+                return girlTemplate;
+            default:
+                return null;
         }
     }
 

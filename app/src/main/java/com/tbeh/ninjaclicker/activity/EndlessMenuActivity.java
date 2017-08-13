@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.tbeh.ninjaclicker.ninjaclicker.R;
+import com.tbeh.ninjaclicker.R;
 import com.tbeh.ninjaclicker.fragment.PreviewFragment;
 import com.tbeh.ninjaclicker.model.Message;
 import com.tbeh.ninjaclicker.view.BaseGameView;

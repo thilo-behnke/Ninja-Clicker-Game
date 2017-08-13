@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.tbeh.ninjaclicker.ninjaclicker.R;
+import com.tbeh.ninjaclicker.R;
 import com.tbeh.ninjaclicker.model.Message;
 
 public class TitleActivity extends BaseActivity {
@@ -17,7 +17,7 @@ public class TitleActivity extends BaseActivity {
         setContentView(R.layout.activity_title);
         View view = findViewById(R.id.activity_title);
         // TODO: Deprecated, search for alternative
-        view.setBackground(new BitmapDrawable(getResourceManager().getMapFile("Title")));
+        view.setBackground(new BitmapDrawable(getResources(), getResourceManager().getMapFile("Title")));
         Button button = (Button) findViewById(R.id.start);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

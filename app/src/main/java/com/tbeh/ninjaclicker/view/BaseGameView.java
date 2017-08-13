@@ -144,7 +144,7 @@ public abstract class BaseGameView extends SurfaceView implements Runnable {
         paint.setTextSize(100);
         canvas.drawText("Score: " + String.valueOf(gameEngine.getScoreManager().getScore()), 100, 100, paint);
 
-        String timeString = gameEngine.gameTimer.getFormattedCurrentTime();
+        String timeString = World.getGameTimer().getFormattedCurrentTime();
         paint.setColor(Color.BLACK);
         canvas.drawText("Time: " + String.valueOf(timeString), 800, 100, paint);
 
@@ -165,7 +165,7 @@ public abstract class BaseGameView extends SurfaceView implements Runnable {
     }
 
     protected GameTimer getGameTimer() {
-        return gameEngine.gameTimer;
+        return World.getGameTimer();
     }
 
     public Bitmap getBackgroundImage() {

@@ -11,10 +11,11 @@ public class GameTimer {
 
     private boolean finished;
 
-    public GameTimer(){}
+    public GameTimer() {
+    }
 
     public void startTimer(int duration) {
-        finished=false;
+        finished = false;
         final int durationNew = duration;
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -23,8 +24,9 @@ public class GameTimer {
                     public void onTick(long millisUntilFinished) {
                         setCurrentTime(millisUntilFinished);
                     }
+
                     public void onFinish() {
-                        finished=true;
+                        finished = true;
                     }
                 };
                 timer.start();
@@ -32,7 +34,7 @@ public class GameTimer {
         });
     }
 
-    public boolean isFinished(){
+    public boolean isFinished() {
         return finished;
     }
 
@@ -55,40 +57,36 @@ public class GameTimer {
         return currentTime;
     }
 
-    public String getFormattedCurrentTime(){
+    public String getFormattedCurrentTime() {
         String timeString = String.valueOf(getCurrentTime());
         char second = '0';
         char milli1 = '0';
         char milli2 = '0';
         char milli3 = '0';
-        if(timeString.equals(0)){
-        }
-        else{
-            if(timeString.length()==4){
+        if (timeString.equals(0)) {
+        } else {
+            if (timeString.length() == 4) {
                 second = timeString.charAt(0);
                 milli1 = timeString.charAt(1);
                 milli2 = timeString.charAt(2);
                 milli3 = timeString.charAt(3);
-            }
-            else if(timeString.length()==3){
+            } else if (timeString.length() == 3) {
                 second = '0';
                 milli1 = timeString.charAt(0);
                 milli2 = timeString.charAt(1);
                 milli3 = timeString.charAt(2);
-            }
-            else if(timeString.length()==2){
+            } else if (timeString.length() == 2) {
                 second = '0';
                 milli1 = '0';
                 milli2 = timeString.charAt(0);
                 milli3 = timeString.charAt(1);
-            }
-            else if(timeString.length()==1){
+            } else if (timeString.length() == 1) {
                 second = '0';
                 milli1 = '0';
                 milli2 = '0';
                 milli3 = timeString.charAt(0);
             }
         }
-        return second+":"+milli1+milli2+milli3;
+        return second + ":" + milli1 + milli2 + milli3;
     }
 }

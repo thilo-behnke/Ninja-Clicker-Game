@@ -1,25 +1,29 @@
 package com.tbeh.ninjaclicker.reader.expression;
 
+import android.support.annotation.Nullable;
+
 import com.tbeh.ninjaclicker.reader.ReadTypes;
 import com.tbeh.ninjaclicker.reader.command.Command;
 
 public abstract class OperationExpression implements Expression {
 
-    private CharacterExpression left;
-    private NumberExpression right;
+    @Nullable
+    private ValueExpression left;
+    @Nullable
+    private ValueExpression right;
 
-    public OperationExpression(CharacterExpression left, NumberExpression right) {
+    public OperationExpression(ValueExpression left, ValueExpression right) {
         this.left = left;
         this.right = right;
     }
 
     public abstract Command evaluate(ReadTypes.Operation operation);
 
-    public CharacterExpression getLeft() {
+    public ValueExpression getLeft() {
         return left;
     }
 
-    public NumberExpression getRight() {
+    public ValueExpression getRight() {
         return right;
     }
 }

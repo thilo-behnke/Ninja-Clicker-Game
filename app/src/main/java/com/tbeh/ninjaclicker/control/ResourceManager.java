@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 
 import com.tbeh.ninjaclicker.ninjaclicker.R;
 import com.tbeh.ninjaclicker.model.sprite.CharacterEnum;

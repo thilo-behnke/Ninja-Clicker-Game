@@ -12,6 +12,9 @@ public class TimerExpression extends OperationExpression {
 
     @Override
     public Command evaluate(WorldObjects.Operation operation) {
-        return new GameObjectCommand((WorldObjects.GameObject) getLeft().evaluate(), operation, (WorldObjects.Count)getRight().evaluate());
+        return new GameObjectCommand(
+                getLeft() != null ? (WorldObjects.GameObject) getLeft().evaluate() : null,
+                operation,
+                getRight() != null ? (WorldObjects.Count)getRight().evaluate() : null);
     }
 }
